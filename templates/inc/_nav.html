@@ -8,7 +8,14 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Добавить новость</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'add_news' %}">Добавить новость</a></li>
         </ul>
+        <span class="navbar_text">
+            {% if request.user.is_authenticated %}
+            Добро пожаловать, {{ user.username }} | <a href="{% url 'logout' %}">Выход</a>
+            {% else %}
+            <a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Авторизоваться</a>
+            {% endif %}
+        </span>
     </div>
 </nav>
